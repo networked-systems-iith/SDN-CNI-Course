@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bookinfo
+  annotations:
+    kubernetes.io/ingress.class: istio
+spec:
+  rules:
+  - host: $MYHOST
+    http:
+      paths:
+      - path: /productpage
+        pathType: Prefix
+        backend:
+          service:
+            name: productpage
+            port:
+              number: 30075
+      - path: /login
+        pathType: Prefix
+        backend:
+          service:
+            name: productpage
+            port:
+              number: 30075
+      - path: /logout
+        pathType: Prefix
+        backend:
+          service:
+            name: productpage
+            port:
+              number: 30075
+      - path: /static
+        pathType: Prefix
+        backend:
+          service:
+            name: productpage
+            port:
+              number: 30075

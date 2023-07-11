@@ -10,7 +10,7 @@
 
 - Deploy the application using the bookinfo.yaml file
   ```shell
-  kubectl create -f bookinfo.yaml
+  kubectl create -l version!=v2,version!=v3 -f bookinfo.yaml
   ```
 
 - Check the status of the pods, services

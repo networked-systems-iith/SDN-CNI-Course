@@ -91,7 +91,8 @@ metadata:
     service: ratings
 spec:
   ports:
-  - port: 9080
+  - nodePort: 31348
+    port: 9080
     name: http
   selector:
     app: ratings
@@ -146,6 +147,7 @@ metadata:
 spec:
   ports:
   - port: 9080
+    nodePort: 32238
     name: http
   selector:
     app: reviews
@@ -297,6 +299,7 @@ metadata:
 spec:
   ports:
   - port: 9080
+    nodePort: 30075
     name: http
   selector:
     app: productpage

@@ -1,5 +1,6 @@
 ## BookInfo Application Setup Procedure
 
+### Download the Minikube Project Files from git
 
 ### Deploy the Application
 

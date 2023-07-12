@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: bookinfo
-  annotations:
-    kubernetes.io/ingress.class: istio
 spec:
   rules:
   - host: $MYHOST

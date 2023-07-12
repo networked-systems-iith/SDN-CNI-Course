@@ -1,0 +1,31 @@
+##################################################################################################
+# Productpage Deployment
+##################################################################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productpage-v1
+  labels:
+    app: productpage
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productpage
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: productpage
+        version: v1
+    spec:
+      containers:
+      - name: productpage
+        image: docker.io/istio/examples-bookinfo-productpage-v1:1.17.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+        securityContext:
+          runAsUser: 1000
+---

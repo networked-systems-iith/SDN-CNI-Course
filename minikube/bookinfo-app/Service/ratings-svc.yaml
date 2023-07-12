@@ -1,0 +1,19 @@
+##################################################################################################
+# Ratings service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: ratings
+  labels:
+    app: ratings
+    service: ratings
+spec:
+  ports:
+  - nodePort: 31348
+    port: 9080
+    name: http
+  selector:
+    app: ratings
+  type: NodePort
+---

@@ -1,60 +1,82 @@
-## Minikube Installation Steps
+## [Minikube Installation]()
 
-### Update and Upgrade your system
+## BookInfo Application Setup Procedure
 
-```shell
-apt-get update -y && apt-get upgrade -y
-```
+### Download the Minikube Project Files from git
 
-### Installtion of Docker => Container Manager
+### Change the directory to bookinfo-app
 
 ```shell
-sudo apt-get install ca-certificates curl gnupg
-
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt-get update
-
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-sudo usermod -aG docker $USER && newgrp docker
+cd bookinfo-app
 ```
 
-To verify the docker installation run: `sudo docker run hello-world`
+### Deploy the Application
 
-![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/77440140-f084-4605-808e-d96544c2b654)
+- Set the **MYHOST** environment variable to hold the URL of the application:
+  ```shell
+  export MYHOST=$(kubectl config view -o jsonpath={.contexts..namespace}).bookinfo.com
+  ```
+
+- Deploy the application using the bookinfo.yaml file
+  ```shell
+  kubectl create -f Deployment/details-deploy.yaml
+  kubectl create -f Deployment/ratings-deploy.yaml
+  kubectl create -f Deployment/reviews-deploy.yaml
+  kubectl create -f Deployment/productpage-deploy.yaml
+
+  kubectl create -f Service/details-svc.yaml
+  kubectl create -f Service/details-svc.yaml
+  kubectl create -f Service/details-svc.yaml
+  kubectl create -f Service/details-svc.yaml
+  ```
+
+- Check the status of the pods, services
+  ```shell
+  kubectl get pods -A
+  kubectl get deploy -A
+  kubectl get svc -A
+  ```
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/9aad4b03-1d92-481a-87c5-dfb747109f5d)
+
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/160362d8-5473-45df-a1da-aeceb21973d4)
+
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/94cec70c-dc20-4f4b-ae05-16f1435913fd)
 
 
+- Scale the deployement after all the pods are in RUNNING state.
+  ```shell
+  kubectl scale deployment details-v1 --replicas 3
 
-### Minikube installation
+  kubectl scale deployment productpage-v1 --replicas 3
+
+  kubectl scale deployment ratings-v1 --replicas 3
+
+  kubectl scale deployment reviews-v1 --replicas 3
+  ```
+
+### Enable External Access to the Application
+
+- Enable the access using bookinfo-ingress.yaml file
+  ```shell
+  kubectl create -f bookinfo-ingress.yaml
+  ```
+
+### Update the /etc/hosts file in the linux based system for the URL to be accessed in the local
+
+`sudo nano /etc/hosts`
 
 ```shell
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
-
-minikube start --driver=docker
+IP-ADDRESS    default.bookinfo.com
 ```
 
-![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/bb28c36c-1a1c-4800-991c-2c6d04144b56)
+### Access Your Application
 
+```shell
+echo http://$MYHOST/productpage
+```
 
-### To make the docker default driver run
+Copy the Output and Paste it in the browser along with the nodeport like the following:
 
-`minikube config set driver docker`
+[http://default.bookinfo.com:30075/productpage](http://default.bookinfo.com:30075/productpage)
 
-### Example to interact with your kubernetes cluster
-
-`kubectl get po -A`
-
-![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/a760fecb-da72-4268-866a-18fa8d6f0ade)
-
-### References
-
-1. [k8s Documentation](https://minikube.sigs.k8s.io/docs/start/)
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e6e788f7-696e-4c77-992e-042e567ae428)

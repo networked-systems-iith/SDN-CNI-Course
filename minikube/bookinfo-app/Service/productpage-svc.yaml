@@ -1,0 +1,19 @@
+##################################################################################################
+# Productpage services
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: productpage
+  labels:
+    app: productpage
+    service: productpage
+spec:
+  ports:
+  - port: 9080
+    nodePort: 30075
+    name: http
+  selector:
+    app: productpage
+  type: NodePort
+---

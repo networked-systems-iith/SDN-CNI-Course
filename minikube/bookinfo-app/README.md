@@ -29,8 +29,15 @@ cd bookinfo-app
 - Check the status of the pods, services
   ```shell
   kubectl get pods -A
+  kubectl get deploy -A
   kubectl get svc -A
   ```
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/9aad4b03-1d92-481a-87c5-dfb747109f5d)
+
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/160362d8-5473-45df-a1da-aeceb21973d4)
+
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/94cec70c-dc20-4f4b-ae05-16f1435913fd)
+
 
 - Scale the deployement after all the pods are in RUNNING state.
   ```shell
@@ -67,3 +74,6 @@ echo http://$MYHOST/productpage
 Copy the Output and Paste it in the browser along with the nodeport like the following:
 
 [http://default.bookinfo.com:30075/productpage](http://default.bookinfo.com:30075/productpage)
+
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e6e788f7-696e-4c77-992e-042e567ae428)
+

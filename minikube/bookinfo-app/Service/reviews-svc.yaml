@@ -1,0 +1,20 @@
+##################################################################################################
+# Reviews service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews
+  labels:
+    app: reviews
+    service: reviews
+spec:
+  ports:
+  - port: 9080
+    nodePort: 32238
+    name: http
+  selector:
+    app: reviews
+  type: NodePort
+ runAsUser: 1000
+---

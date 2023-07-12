@@ -1,4 +1,4 @@
-## [Minikube Installation]()
+## Click here for [Minikube Installation](https://github.com/networked-systems-iith/SDN-CNI-Course/blob/main/minikube/minikube-installation.md)
 
 ## BookInfo Application Setup Procedure
 

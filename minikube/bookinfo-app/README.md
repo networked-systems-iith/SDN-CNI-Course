@@ -2,6 +2,10 @@
 
 ### Download the Minikube Project Files from git
 
+```shell
+cd bookinfo-app
+```
+
 ### Deploy the Application
 
 - Set the **MYHOST** environment variable to hold the URL of the application:
@@ -11,7 +15,15 @@
 
 - Deploy the application using the bookinfo.yaml file
   ```shell
-  kubectl create -l version!=v2,version!=v3 -f bookinfo.yaml
+  kubectl create -f Deployment/details-deploy.yaml
+  kubectl create -f Deployment/ratings-deploy.yaml
+  kubectl create -f Deployment/reviews-deploy.yaml
+  kubectl create -f Deployment/productpage-deploy.yaml
+
+  kubectl create -f Service/details-svc.yaml
+  kubectl create -f Service/details-svc.yaml
+  kubectl create -f Service/details-svc.yaml
+  kubectl create -f Service/details-svc.yaml
   ```
 
 - Check the status of the pods, services

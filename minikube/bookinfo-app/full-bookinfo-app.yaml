@@ -68,8 +68,6 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
-        securityContext:
-          runAsUser: 1000
 ---
 ##################################################################################################
 # Ratings service
@@ -115,8 +113,6 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
-        securityContext:
-          runAsUser: 1000
 ---
 ##################################################################################################
 # Reviews service
@@ -162,8 +158,6 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
-        securityContext:
-          runAsUser: 1000
 ---
 ##################################################################################################
 # Productpage services
@@ -209,6 +203,4 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
-        securityContext:
-          runAsUser: 1000
 ---

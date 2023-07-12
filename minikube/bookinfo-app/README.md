@@ -2,6 +2,8 @@
 
 ### Download the Minikube Project Files from git
 
+### Change the directory to bookinfo-app
+
 ```shell
 cd bookinfo-app
 ```

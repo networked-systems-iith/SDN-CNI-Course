@@ -5,3 +5,6 @@
 - mTLS in istio: https://docs.google.com/document/d/1E3_4LtfjC2yTbmvlQoB53beRczXUNf2UOtARTw42x-I/edit?usp=sharing
 - Observability in istio: https://docs.google.com/document/d/1rIQ4NCoGaQHSceM9wsCR5fMFRPaznExHJl0tdbA7K34/edit?usp=sharing
 - VM image: https://iith-my.sharepoint.com/:u:/g/personal/cs20resch11005_iith_ac_in/EZdEDFIBM7ZPsoGBDRve4nYBFQIcVeap184YviQBBiNPJA?e=1tWsw2
+- Ref:https://istio.io/latest/docs/concepts/traffic-management/
+	    https://istio.io/latest/docs/concepts/security/
+	

@@ -25,9 +25,9 @@ cd bookinfo-app
   kubectl create -f Deployment/productpage-deploy.yaml
 
   kubectl create -f Service/details-svc.yaml
-  kubectl create -f Service/details-svc.yaml
-  kubectl create -f Service/details-svc.yaml
-  kubectl create -f Service/details-svc.yaml
+  kubectl create -f Service/ratings-svc.yaml
+  kubectl create -f Service/reviews-svc.yaml
+  kubectl create -f Service/productpage-svc.yaml
   ```
 
 - Check the status of the pods, services
@@ -43,22 +43,11 @@ cd bookinfo-app
 ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/94cec70c-dc20-4f4b-ae05-16f1435913fd)
 
 
-- Scale the deployement after all the pods are in RUNNING state.
-  ```shell
-  kubectl scale deployment details-v1 --replicas 3
-
-  kubectl scale deployment productpage-v1 --replicas 3
-
-  kubectl scale deployment ratings-v1 --replicas 3
-
-  kubectl scale deployment reviews-v1 --replicas 3
-  ```
-
 ### Enable External Access to the Application
 
 - Enable the access using bookinfo-ingress.yaml file
   ```shell
-  kubectl create -f bookinfo-ingress.yaml
+  kubectl create -f LoadBalancer/bookinfo-ingress.yaml
   ```
 
 ### Update the /etc/hosts file in the linux based system for the URL to be accessed in the local

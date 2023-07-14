@@ -4,6 +4,10 @@
 
 ### Download the Minikube Project Files from git
 
+### Start the Minikube
+
+`minikube start --driver=docker`
+
 ### Change the directory to bookinfo-app
 
 ```shell
@@ -69,3 +73,8 @@ Copy the Output and Paste it in the browser along with the nodeport like the fol
 [http://default.bookinfo.com:30075/productpage](http://default.bookinfo.com:30075/productpage)
 
 ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e6e788f7-696e-4c77-992e-042e567ae428)
+
+### To Delete All the pods, services
+
+`minikube delete --all`
+

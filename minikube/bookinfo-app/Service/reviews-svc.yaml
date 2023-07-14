@@ -16,5 +16,4 @@ spec:
   selector:
     app: reviews
   type: NodePort
- runAsUser: 1000
 ---

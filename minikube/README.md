@@ -14,6 +14,16 @@
 cd bookinfo-app
 ```
 
+### Update the /etc/hosts file in the linux based system for the URL to be accessed in the local
+
+Copy the IP of the cluster from `kubectl cluster-info`
+
+`sudo nano /etc/hosts`
+
+```shell
+IP-ADDRESS    default.bookinfo.com
+```
+
 ### Deploy the Application
 
 - Set the **MYHOST** environment variable to hold the URL of the application:
@@ -55,14 +65,6 @@ cd bookinfo-app
   ```
 
 #### NOTE: If you face the LoadBalancer deployment issue with $MYHOST, then follow the [fix here](https://github.com/networked-systems-iith/SDN-CNI-Course/issues/1)
-
-### Update the /etc/hosts file in the linux based system for the URL to be accessed in the local
-
-`sudo nano /etc/hosts`
-
-```shell
-IP-ADDRESS    default.bookinfo.com
-```
 
 ### Access Your Application
 

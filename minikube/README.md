@@ -54,7 +54,7 @@ cd bookinfo-app
   kubectl create -f LoadBalancer/bookinfo-ingress.yaml
   ```
 
-#### If you face the LoadBalancer deployment issue with $MYHOST, then follow the [fix here](https://github.com/networked-systems-iith/SDN-CNI-Course/issues/1)
+#### NOTE: If you face the LoadBalancer deployment issue with $MYHOST, then follow the [fix here](https://github.com/networked-systems-iith/SDN-CNI-Course/issues/1)
 
 ### Update the /etc/hosts file in the linux based system for the URL to be accessed in the local
 

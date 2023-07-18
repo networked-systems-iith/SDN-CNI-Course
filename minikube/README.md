@@ -8,6 +8,9 @@
 
 `minikube start --driver=docker`
 
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/a5f275b9-aa2f-48de-a9e7-879b720fbeef)
+
+
 ### Change the directory to bookinfo-app
 
 ```shell
@@ -16,20 +19,27 @@ cd bookinfo-app
 
 ### Update the /etc/hosts file in the linux based system for the URL to be accessed in the local
 
-Copy the IP of the cluster from `kubectl cluster-info`
+- Copy the IP of the cluster
 
-`sudo nano /etc/hosts`
+  ```shell
+  kubectl cluster-info
+  ```
 
-```shell
-IP-ADDRESS    default.bookinfo.com
-```
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/0242404a-e425-4167-9c31-8e1a2a2a41b1)
+
+- Paste the Copied Cluster IP in the /etc/hosts
+  
+  ```shell
+  sudo nano /etc/hosts
+  ```
+  
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e4693e1e-1149-424c-9324-739d38c68527)
+
+  ```shell
+  (IP-ADDRESS)    default.bookinfo.com
+  ```
 
 ### Deploy the Application
-
-- Set the **MYHOST** environment variable to hold the URL of the application:
-  ```shell
-  export MYHOST=$(kubectl config view -o jsonpath={.contexts..namespace}).bookinfo.com
-  ```
 
 - Deploy the application using the bookinfo.yaml file
   ```shell
@@ -60,19 +70,24 @@ IP-ADDRESS    default.bookinfo.com
 ### Enable External Access to the Application
 
 - Enable the access using bookinfo-ingress.yaml file
+  
   ```shell
   kubectl create -f LoadBalancer/bookinfo-ingress.yaml
   ```
 
-#### NOTE: If you face the LoadBalancer deployment issue with $MYHOST, then follow the [fix here](https://github.com/networked-systems-iith/SDN-CNI-Course/issues/1)
+- Check the bookinfo ingress
+  
+  ```shell
+  kubectl get ingress bookinfo
+  ```
 
+- **Optional** To delete the ingress bookinfo
+  
+  ```shell
+  kubectl delete ingress bookinfo
+  ```
+  
 ### Access Your Application
-
-```shell
-echo http://$MYHOST/productpage
-```
-
-Copy the Output and Paste it in the browser along with the nodeport like the following:
 
 [http://default.bookinfo.com:30075/productpage](http://default.bookinfo.com:30075/productpage)
 

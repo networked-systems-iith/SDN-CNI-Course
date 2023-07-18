@@ -123,7 +123,7 @@ cd SDN-CNI-Course-main/minikube/bookinfo-app
 ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e6e788f7-696e-4c77-992e-042e567ae428)
 
 
-### Appendix
+## Appendix
 
 - To Delete everything (i.e., pods, services, deploy etc.,)
   
@@ -146,6 +146,12 @@ cd SDN-CNI-Course-main/minikube/bookinfo-app
   minikube delete --purge
   ```
   
-### References
+## References
 
-
+- [Minikube Cheatsheet](https://cheat.readthedocs.io/en/latest/kubernetes/minikube.html)
+- [Kubectl Cheatsheet Reference 1](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+- [Kubectl Cheatsheet Reference 2](https://www.pluralsight.com/resources/blog/cloud/kubernetes-cheat-sheet)
+- [Cheatsheet for Kubernetes Reference 1](https://medium.com/geekculture/cheatsheet-for-kubernetes-minikube-kubectl-5500ffd2f0d5)
+- [Kubernetes Cheat Sheet Reference 2](https://intellipaat.com/blog/tutorial/devops-tutorial/kubernetes-cheat-sheet/)
+- [Git Cheatsheet](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/f8106909-4204-4042-a2a5-b58e65735852)
+- [Linux Commands Cheatsheet](http://www.cheat-sheets.org/saved-copy/ubunturef.pdf)

@@ -4,6 +4,7 @@
 
 ### Download the Minikube Project Files from git
 
+
 ### Start the Minikube
 
 `minikube start --driver=docker`
@@ -14,8 +15,11 @@
 ### Change the directory to bookinfo-app
 
 ```shell
-cd bookinfo-app
+cd SDN-CNI-Course-main/minikube/bookinfo-app
 ```
+
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/39c3688e-a457-4ac2-8e31-a8406e12803a)
+
 
 ### Update the /etc/hosts file in the linux based system for the URL to be accessed in the local
 
@@ -38,6 +42,7 @@ cd bookinfo-app
   ```shell
   (IP-ADDRESS)    default.bookinfo.com
   ```
+
 
 ### Deploy the Application
 
@@ -102,12 +107,14 @@ cd bookinfo-app
   ```shell
   kubectl get ingress bookinfo
   ```
+
   
 ### Access Your Application
 
 [http://default.bookinfo.com:30075/productpage](http://default.bookinfo.com:30075/productpage)
 
 ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e6e788f7-696e-4c77-992e-042e567ae428)
+
 
 ### To Delete All the pods, services
 

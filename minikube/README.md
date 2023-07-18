@@ -44,27 +44,46 @@ cd bookinfo-app
 - Deploy the application using the bookinfo.yaml file
   ```shell
   kubectl create -f Deployment/details-deploy.yaml
+  ```
+  ```shell
   kubectl create -f Deployment/ratings-deploy.yaml
+  ```
+  ``shell
   kubectl create -f Deployment/reviews-deploy.yaml
+  ```
+  ```shell
   kubectl create -f Deployment/productpage-deploy.yaml
+  ```
 
+  ```shell
   kubectl create -f Service/details-svc.yaml
+  ```
+  ```shell
   kubectl create -f Service/ratings-svc.yaml
+  ```
+  ```shell
   kubectl create -f Service/reviews-svc.yaml
+  ```
+  ```shell
   kubectl create -f Service/productpage-svc.yaml
   ```
 
-- Check the status of the pods, services
+- Check the status of the pods, services, deployment
+  
   ```shell
   kubectl get pods -A
+  ```
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/9aad4b03-1d92-481a-87c5-dfb747109f5d)
+  
+  ```shell
   kubectl get deploy -A
+  ```
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/160362d8-5473-45df-a1da-aeceb21973d4)
+
+  ```shell
   kubectl get svc -A
   ```
-![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/9aad4b03-1d92-481a-87c5-dfb747109f5d)
-
-![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/160362d8-5473-45df-a1da-aeceb21973d4)
-
-![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/94cec70c-dc20-4f4b-ae05-16f1435913fd)
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/94cec70c-dc20-4f4b-ae05-16f1435913fd)
 
 
 ### Enable External Access to the Application
@@ -79,12 +98,6 @@ cd bookinfo-app
   
   ```shell
   kubectl get ingress bookinfo
-  ```
-
-- **Optional** To delete the ingress bookinfo
-  
-  ```shell
-  kubectl delete ingress bookinfo
   ```
   
 ### Access Your Application

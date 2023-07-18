@@ -55,9 +55,9 @@ minikube start --driver=docker
 
 ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/a760fecb-da72-4268-866a-18fa8d6f0ade)
 
-### To Delete All the pods, services
+### To Delete Everything from minikube
 
-`minikube delete --all`
+`minikube delete all --all`
 
 ### References
 

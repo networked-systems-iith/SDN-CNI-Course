@@ -78,6 +78,8 @@ cd SDN-CNI-Course-main/minikube/bookinfo-app
   kubectl create -f Service/productpage-svc.yaml
   ```
 
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/68013d1e-226f-43c2-a282-ae9d1a63a071)
+
 - Check the status of the pods, services, deployment
   
   ```shell

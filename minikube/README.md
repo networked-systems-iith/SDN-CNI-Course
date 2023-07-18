@@ -41,20 +41,23 @@ cd bookinfo-app
 
 ### Deploy the Application
 
-- Deploy the application using the bookinfo.yaml file
+- Deployment of the application
+  
   ```shell
   kubectl create -f Deployment/details-deploy.yaml
   ```
   ```shell
   kubectl create -f Deployment/ratings-deploy.yaml
   ```
-  ``shell
+  ```shell
   kubectl create -f Deployment/reviews-deploy.yaml
   ```
   ```shell
   kubectl create -f Deployment/productpage-deploy.yaml
   ```
 
+- Deploy the Services of the Application
+  
   ```shell
   kubectl create -f Service/details-svc.yaml
   ```

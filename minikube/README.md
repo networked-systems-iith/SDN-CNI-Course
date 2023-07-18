@@ -106,12 +106,15 @@ cd SDN-CNI-Course-main/minikube/bookinfo-app
   kubectl create -f LoadBalancer/bookinfo-ingress.yaml
   ```
 
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/22f58a83-4533-4af0-8a96-f1a1a4824884)
+
 - Check the bookinfo ingress
   
   ```shell
   kubectl get ingress bookinfo
   ```
 
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/4ca6ad96-f7e8-4dc3-ae5d-c4e8137c4ac2)
   
 ### Access Your Application
 

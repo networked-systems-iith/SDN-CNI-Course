@@ -123,7 +123,29 @@ cd SDN-CNI-Course-main/minikube/bookinfo-app
 ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e6e788f7-696e-4c77-992e-042e567ae428)
 
 
-### To Delete All the pods, services
+### Appendix
 
-`minikube delete all --all`
+- To Delete everything (i.e., pods, services, deploy etc.,)
+  
+  ```shell
+  kubectl delete all --all
+  ```
+
+- To delete ingressbookinfo
+  
+  ```shell
+  kubectl delete ingress bookinfo
+  ```
+
+- To delete the entire minikube cluster
+  
+  ```shell
+  minikube delete --all
+  ```
+  ```shell
+  minikube delete --purge
+  ```
+  
+### References
+
 

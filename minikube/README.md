@@ -61,6 +61,8 @@ cd SDN-CNI-Course-main/minikube/bookinfo-app
   kubectl create -f Deployment/productpage-deploy.yaml
   ```
 
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/11f0be40-ec2e-4bff-968e-5492dc45c69c)
+
 - Deploy the Services of the Application
   
   ```shell

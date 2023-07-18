@@ -80,5 +80,5 @@ Copy the Output and Paste it in the browser along with the nodeport like the fol
 
 ### To Delete All the pods, services
 
-`minikube delete --all`
+`minikube delete all --all`
 

@@ -36,12 +36,12 @@ cd SDN-CNI-Course-main/minikube/bookinfo-app
   ```shell
   sudo nano /etc/hosts
   ```
-  
-  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e4693e1e-1149-424c-9324-739d38c68527)
 
-  ```shell
+    ```shell
   (IP-ADDRESS)    default.bookinfo.com
   ```
+  
+  ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/24610167/e4693e1e-1149-424c-9324-739d38c68527)
 
 
 ### Deploy the Application

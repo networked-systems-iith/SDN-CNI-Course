@@ -1,6 +1,13 @@
 ##################################################################################################
 # Details Deployment
 ##################################################################################################
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: bookinfo-details
+  labels:
+    account: details
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

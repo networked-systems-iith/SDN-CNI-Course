@@ -1,6 +1,13 @@
 ##################################################################################################
 # Reviews Deployment
 ##################################################################################################
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: bookinfo-reviews
+  labels:
+    account: reviews
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -53,7 +53,7 @@ spec:
         app: reviews
         version: v2
     spec:
-#      serviceAccountName: bookinfo-reviews
+      serviceAccountName: bookinfo-reviews
       containers:
       - name: reviews
         image: docker.io/istio/examples-bookinfo-reviews-v2:1.17.0
@@ -80,7 +80,7 @@ spec:
         app: reviews
         version: v3
     spec:
-#      serviceAccountName: bookinfo-reviews
+      serviceAccountName: bookinfo-reviews
       containers:
       - name: reviews
         image: docker.io/istio/examples-bookinfo-reviews-v3:1.17.0

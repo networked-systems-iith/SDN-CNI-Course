@@ -1,0 +1,174 @@
+eBPF Hands-on tutorial.
+
+Program 1 
+
+Simple xdp program that outputs “hello world” for every packet received on the interface.
+
+Steps to compile and execute the program : 
+
+$ cd $HOME/eBPF-tutorial/01-xdp-pass/
+$ clang -target bpf -Wall -O3 -g  -I/home/ubuntu/eBPF_tutorial/libbpf/src/build/usr/include -c <my_prog.c> -o <object_file.o>
+
+For example, let us load or attach the program to the interface in the VM with Internet connectivity.
+Compile the program to generate the eBPF bytecode
+$ clang -target bpf -Wall -O3 -g -I/home/ubuntu/eBPF_tutorial/libbpf/src/build/usr/include -c 01_kern.c -o 01_kern.o
+
+Hook the program to the interface with the name <interface_name> using the following command.
+$ sudo ip link set dev <interface_name> xdpgeneric obj <object_file.o>: sec <section_name>
+
+For example,  sudo ip link set dev enp0s3 xdpgeneric obj 01_kern.o sec xdp
+
+To check if the program is attached or not, use the command
+$ ip link list dev <interface name>
+
+
+To see the hello world in the trace pipe,
+$ sudo cat  /sys/kernel/tracing/trace_pipe
+
+To remove the hooked program from the interface, use the below command
+$ sudo ip link set dev <interface_name> xdpgeneric off
+For example,
+$ sudo ip link set dev enp0s3 xdpgeneric off
+
+
+
+
+
+
+
+Experiment setup and packet generation for Programs 2-4
+
+
+
+
+Spinning up the container
+Open a new terminal and spin up the container using the command “sudo docker run -it ubuntu:jammy /bin/bash”. Do not close this terminal, as we will send packets from this terminal (further referred to as container terminal in this document).
+From another terminal on the VM, check the veth interface using the command “ip a”
+Load the ebpf program section to the veth interface of the VM. Replace vethx with the corresponding interface. 
+
+
+To generate different packets, execute the following commands from the container terminal
+To send ICMP traffic, execute ping 172.17.0.1.
+To send TCP traffic, execute sudo hping3 172.17.0.1
+ Use Scapy to send UDP and ARP 
+Execute the command “scapy”
+To send ARP packets, execute: sendp(Ether()/ARP(), iface="eth0")
+To send VLAN tagged packets, execute: sendp(Ether()/Dot1Q(vlan=42)/IP(dst="172.17.0.1")/UDP()/"Payload", iface="eth0")
+To send UDP packets, execute:
+sendp(Ether()/IP(dst="172.17.0.1")/UDP()/"Payload", iface="eth0")
+ICMP and TCP packets can also be sent using scapy. 
+To send ICMP packet:
+ 	sendp(Ether()/IP(dst="172.17.0.1")/ICMP(), iface="eth0")
+To send TCP packet: 
+sendp(Ether()/IP(dst="172.17.0.1")/TCP(), iface="eth0")
+
+Program 2
+
+Simple xdp program contains two sections named “xdp_pass” and “xdp_drop”. On hooking section “xdp_pass”, the packet gets forwarded as usual. On hooking section “xdp_drop” the packet get dropped at the interface.
+
+Let us compile the program using Makefile this time.
+$ cd $HOME/eBPF_tutorial/02-xdp-prog-by-name/
+$ make
+
+Hook the program and observe the trace as below:
+Load the program with section name xdp_pass to the interface first as explained for program 1. 
+For example,  sudo ip link set dev <vethx> xdpgeneric obj 02_kern.o sec xdp_pass
+Send ICMP (ping) packets from the container terminal (as explained in the Packet Generation section) and check the trace pipe using the command “sudo cat  /sys/kernel/tracing/trace_pipe”. Please note that the ping should be successful.
+Note that we need to unload the section before loading a new section. Refer to program 1 for the command to unload the section. 
+Load the program with the section name xdp_drop to the interface. 
+For example,  sudo ip link set dev <vethx> xdpgeneric obj 02_kern.o sec xdp_drop
+Send ping packet from the container terminal and check the trace pipe using. 
+Note that ping should be unsuccessful.
+$ sudo cat  /sys/kernel/tracing/trace_pipe
+Unload the section as discussed above. 
+
+
+Program 3
+
+This program parses the ethernet header and prints the ethernet type from the packet. 
+Let us compile the program using Makefile.
+$ cd $HOME/eBPF_tutorial/03-xdp-packet-parsing/
+$ make
+
+Hook the program and observe the trace as explained below. 
+Load the program with section name xdp_packet_parser to the veth interface as explained for program 1. 
+For example, sudo ip link set dev <vethx> xdpgeneric obj 03_kern.o sec xdp_packet_parser
+Send a ping packet form the container terminal and check the trace pipe. 
+Now send an ARP packet and check the trace pipe. 
+$ sudo cat  /sys/kernel/tracing/trace_pipe
+Unload the section from the interface
+
+Program 4
+
+This program performs packet parsing and counts the number of VLAN, IPv4, ICMP, TCP and UDP packets. We store the packet count in eBPF map named “xdp_hdr_map”  at indexes 0, 1, 2, 3, and 4 for VLAN, IPv4, ICMP, UDP and TCP, respectively.
+
+Let us compile the program using Makefile.
+$ cd $HOME/eBPF_tutorial/04-xdp-packet-counting/
+$ make
+
+Execution
+Load the program with section name xdp_packet_counter to the veth interface as explained earlier. 
+For example, sudo ip link set dev <vethx> xdpgeneric obj 04_kern.o sec xdp_packet_counter
+Let us check the counter stored in maps using bpftool. 
+$ sudo bpftool map dump name xdp_hdr_map
+
+
+
+
+Send a ping(ICMP) packet from the container terminal and check that the counter at index 1 and 2 is incremented.
+Send a TCP packet from the container terminal and check that the counter at index 1 and 4 gets incremented.
+Send a UDP packet from the container terminal and check that the counter at index 1 and 3 gets incremented.
+Send a VLAN packet from the container terminal and check that the counter at index 0 and 4 gets incremented.
+
+
+Unload the section from the interface
+
+
+Program 5
+
+ This program parses packets and counts the number of IPv4, ICMP, UDP and TCP packets. We store the packet count in an eBPF map named “packet_counter_map”  at indexes 0, 1, 2, and 3 IPv4, ICMP, UDP and TCP, respectively. Here we access the map from the user space program and print the counter values on the console.
+
+Let us compile the program using Makefile
+$ cd  $HOME/eBPF_tutorial/05-tc-hook/
+$ make
+
+Execution
+$ sudo ./05_user -i <vethx>
+The user space program displays the map content, that is, the packet counter, every 5 seconds.
+Send a ping(ICMP) packet from the container terminal and check that the counter for IP and ICMP packet is incremented.
+Send a TCP packet from the container terminal and check that the counter for IP and TCP packet is incremented.
+Send a UDP packet from the container terminal and check that the counter for IP and UDP packet is incremented.
+Exit the execution by pressing Ctrl+c
+
+Program 6
+
+This program performs packet parsing and drops the TCP packet
+
+Let us compile the program using Makefile.
+$ cd $HOME/eBPF_tutorial/06-xdp-packet-filtering/
+$ make
+
+Execution
+Load the program with section name xdp_packet_counter to the veth interface as explained earlier. 
+For example, sudo ip link set dev <vethx> xdpgeneric obj 05_kern.o sec xdp_packet_filter
+Send a ping(ICMP) packet from the container terminal
+Now check if you see any message in the trace pipe
+
+$ sudo cat  /sys/kernel/tracing/trace_pipe
+
+Send a TCP packet from the container terminal and check the message in the trace_pipe terminal.
+Send TCP packet using hping3: $ hping3 172.17.0.1
+See the message: $ sudo cat  /sys/kernel/tracing/trace_pipe
+
+You should also observe that the TCP packets are dropped:
+
+
+
+
+
+
+
+
+
+
+

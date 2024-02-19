@@ -1,3 +1,5 @@
+[Link](https://iith-my.sharepoint.com/:u:/g/personal/cs20resch11005_iith_ac_in/EdRzGSc_izRImaChIv8gM-IB7Wi-LrFITGdKLru5q7-7SA?e=nkOuFz) for the VM 
+
 ## Click here for [Minikube Installation](https://github.com/networked-systems-iith/SDN-CNI-Course/blob/main/minikube/minikube-installation.md)
 
 ## BookInfo Application Setup Procedure

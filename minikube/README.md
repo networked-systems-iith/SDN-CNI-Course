@@ -7,6 +7,8 @@
 ### Download the Minikube Project Files from git by downloading the zip file as shown below 
 ![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/80828013/e7088788-36fb-4d9b-8c77-09db40884b1b)
 
+The zip file is downloaded in the Downloads folder --> Extract the zip file and proceed with the following steps.
+
 
 ### Start the Minikube
 

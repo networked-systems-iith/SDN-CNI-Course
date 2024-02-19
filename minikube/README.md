@@ -4,7 +4,8 @@
 
 ## BookInfo Application Setup Procedure
 
-### Download the Minikube Project Files from git
+### Download the Minikube Project Files from git by downloading the zip file as shown below 
+![image](https://github.com/networked-systems-iith/SDN-CNI-Course/assets/80828013/e7088788-36fb-4d9b-8c77-09db40884b1b)
 
 
 ### Start the Minikube
